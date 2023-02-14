@@ -10,6 +10,8 @@ const Student = () => {
     const [classing, setClassing] = useState("")
     const [batching, setBatching] = useState("")
     const [yearing, setYearing] = useState("")
+    const [updateindex,setUpdateindex]=useState(0);
+    const [flag,setFlag]=useState(false);
 
     const alpha = (e) => {
         setNaming(e.target.value);
@@ -53,6 +55,25 @@ const Student = () => {
         dispatch(deleteTodo(indexing))
 
     }
+    const onEditHandler = (valueing,indexing) =>{
+        setNaming(valueing.Name);
+        setBatching(valueing.Batch);
+        setClassing(valueing.Class);
+        setYearing(valueing.Year);
+        setUpdateindex(indexing);
+        setFlag(true);
+
+    }
+    const onUpdateHandler = () =>{
+        if(naming && classing && batching && yearing !==""){
+            let updated = {
+                Name:naming,
+                Class:classing,
+                
+            }
+
+}
+    }
 
     return (
         <div>
@@ -74,7 +95,10 @@ const Student = () => {
                             <input type="email" className="form-control" value={yearing} placeholder="Year" onChange={peta} />
                         </div>
                         <div className="text-center mt-5">
-                            <button type="button" className="btn btn-primary" onClick={onAddHandler}>Add Student</button>
+                            {
+                                flag? <button type="button" className="btn btn-primary" onClick={onUpdateHandler}>Update Student</button>:
+                            
+                            <button type="button" className="btn btn-primary" onClick={onAddHandler}>Add Student</button>}
 
                         </div>
                     </div>
