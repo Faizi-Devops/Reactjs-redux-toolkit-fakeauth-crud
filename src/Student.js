@@ -36,6 +36,10 @@ const Student = () => {
                 Year: yearing,
             }
             dispatch(addTodo(addStudent))
+            setClassing("")
+            setBatching("")
+            setYearing("")
+            setNaming("")
             
 
         }
@@ -44,6 +48,12 @@ const Student = () => {
         }
 
     }
+    const onDeleteHandler = (indexing) =>{
+        
+        dispatch(deleteTodo(indexing))
+
+    }
+
     return (
         <div>
             <div className="d-flex justify-content-center mt-3">
@@ -52,16 +62,16 @@ const Student = () => {
                     <div className="card-body">
                         <h5 className="card-title text-center">Student App</h5>
                         <div className="mb-3 mt-4">
-                            <input type="email" className="form-control" placeholder="Name" onChange={alpha} />
+                            <input type="email" className="form-control" value={naming} placeholder="Name" onChange={alpha} />
                         </div>
                         <div className="mb-3 mt-4">
-                            <input type="email" className="form-control" placeholder="Class" onChange={beta} />
+                            <input type="email" className="form-control" value={classing} placeholder="Class" onChange={beta} />
                         </div>
                         <div className="mb-3 mt-4">
-                            <input type="email" className="form-control" placeholder="Batch" onChange={gema} />
+                            <input type="email" className="form-control" value={batching} placeholder="Batch" onChange={gema} />
                         </div>
                         <div className="mb-3 mt-4">
-                            <input type="email" className="form-control" placeholder="Year" onChange={peta} />
+                            <input type="email" className="form-control" value={yearing} placeholder="Year" onChange={peta} />
                         </div>
                         <div className="text-center mt-5">
                             <button type="button" className="btn btn-primary" onClick={onAddHandler}>Add Student</button>
@@ -79,6 +89,9 @@ const Student = () => {
                         <th scope="col">Class</th>
                         <th scope="col">batch</th>
                         <th scope="col">year</th>
+                        <th scope="col">Delete</th>
+                        <th scope="col">Update</th>
+
                     </tr>
                 </thead>
                 {
@@ -91,6 +104,12 @@ const Student = () => {
                                     <td>{value.Class}</td>
                                     <td>{value.Batch}</td>
                                     <td>{value.Year}</td>
+                                    <td>
+                                    <button type="button" class="btn btn-outline-danger" onClick={()=>onDeleteHandler(index)}>Delete</button>
+                                    </td>
+                                    <td>
+                                    <button type="button" class="btn btn-outline-success" onClick={()=>onEditHandler(value,index)}>Update</button>
+                                    </td>
                                 </tr>
 
                             </tbody>

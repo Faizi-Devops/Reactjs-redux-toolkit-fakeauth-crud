@@ -20,6 +20,7 @@ export const todoSlice = createSlice({
    
     },
     deleteTodo: (state,action) => {
+        state.value.splice(action.payload,1);
     
     },
     updateTodo:(state,action)=>{
