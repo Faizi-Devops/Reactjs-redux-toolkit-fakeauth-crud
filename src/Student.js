@@ -65,13 +65,21 @@ const Student = () => {
 
     }
     const onUpdateHandler = () =>{
+        setFlag(false)
         if(naming && classing && batching && yearing !==""){
-            let updated = {
+            let updatedvalue = {
                 Name:naming,
                 Class:classing,
-                
+                Batch:batching,
+                Year:yearing
             }
+            dispatch(updateTodo({updatedvalue,updateindex}))
 
+
+
+}
+else{
+    alert("Please fill all the params")
 }
     }
 
