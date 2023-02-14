@@ -74,6 +74,10 @@ const Student = () => {
                 Year:yearing
             }
             dispatch(updateTodo({updatedvalue,updateindex}))
+            setNaming("")
+            setClassing("")
+            setBatching("")
+            setYearing("")
 
 
 
